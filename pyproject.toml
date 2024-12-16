@@ -2,24 +2,30 @@
 name = "hg-rl-course"
 version = "0.1.0"
 description = "Repo for the RL course"
-requires-python = ">=3.10"
+requires-python = ">=3.10.1"
 dependencies = [
     "gymnasium[box2d]>=1.0.0",
     "huggingface-hub>=0.26.5",
     "huggingface-sb3>=3.0",
     "ipykernel>=6.29.5",
     "jupyter>=1.1.1",
+    "mlagents",
+    "mlagents-envs",
     "rich>=13.9.4",
     "ruff>=0.8.3",
     "stable-baselines3>=2.4.0",
     "swig>=4.3.0",
-    "tensorboard>=2.18.0",
-    "torch>=2.5.1",
-    "torchvision>=0.20.1",
 ]
 [tool.hatch.build.targets.wheel]
 packages = ["src/rl_course"]
 
+[tool.uv.sources]
+mlagents-envs = { path = "src/ml-agents/ml-agents-envs" }
+mlagents = { path = "src/ml-agents/ml-agents" }
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+# Mac installation of torch nightly
+# uv pip install --pre --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu

@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1734348314",
+        "python_version": "3.10.16 (main, Dec  6 2024, 20:50:22) [Clang 18.1.8 ]",
+        "command_line_arguments": "/Users/ivsa/Documents/Projects/Fun/RL/hg_rl_course/.venv/bin/mlagents-learn notebooks/huggy.config.yaml --env=trained-envs-executables/linux/Huggy --run-id=Huggy --no-graphics --force",
+        "mlagents_version": "1.2.0.dev0",
+        "mlagents_envs_version": "1.2.0.dev0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "2.6.0.dev20241214",
+        "numpy_version": "1.23.5",
+        "end_time_seconds": "1734348315"
+    },
+    "total": 1.1270819589990424,
+    "count": 1,
+    "self": 0.002731750995735638,
+    "children": {
+        "run_training.setup": {
+            "total": 0.01830687500478234,
+            "count": 1,
+            "self": 0.01830687500478234
+        },
+        "TrainerController.start_learning": {
+            "total": 1.1060433329985244,
+            "count": 1,
+            "self": 0.00018941599410027266,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 1.1058494170138147,
+                    "count": 1,
+                    "self": 1.1058494170138147
+                },
+                "trainer_threads": {
+                    "total": 5.839974619448185e-07,
+                    "count": 1,
+                    "self": 5.839974619448185e-07
+                },
+                "TrainerController._save_models": {
+                    "total": 3.915993147529662e-06,
+                    "count": 1,
+                    "self": 3.915993147529662e-06
+                }
+            }
+        }
+    }
+}

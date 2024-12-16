@@ -11,9 +11,10 @@ from huggingface_sb3 import package_to_hub
 from huggingface_hub import login, whoami
 from huggingface_hub.errors import LocalTokenNotFoundError
 
+from rl_course.log import logger
 
-def load_dotenv() -> None:
-    env_path = os.path.join(os.getcwd(), ".env")
+
+def load_dotenv(env_path: str) -> None:
     loaded_vars = []
     try:
         with open(env_path, "r") as f:
@@ -25,7 +26,7 @@ def load_dotenv() -> None:
 
                 try:
                     if "=" not in line:
-                        print(f"Warning: Invalid format at line {line_num}: {line}")
+                        logger.info(f"Warning: Invalid format at line {line_num}: {line}")
                         continue
 
                     key, value = line.split("=", 1)
@@ -34,7 +35,7 @@ def load_dotenv() -> None:
                     if value and value[0] == value[-1] and value[0] in "\"'":
                         value = value[1:-1]
                     if not key.isidentifier():
-                        print(
+                        logger.info(
                             f"Warning: Invalid variable name at line {line_num}: {key}"
                         )
                         continue
@@ -43,15 +44,15 @@ def load_dotenv() -> None:
                     loaded_vars.append(key)
 
                 except Exception as e:
-                    print(f"Warning: Could not process line {line_num}: {e}")
+                    logger.info(f"Warning: Could not process line {line_num}: {e}")
 
     except FileNotFoundError:
-        print(f"Error: Environment file '{env_path}' not found")
+        logger.info(f"Error: Environment file '{env_path}' not found")
         return {}
     except Exception as e:
-        print(f"Error: Failed to load environment file: {e}")
+        logger.info(f"Error: Failed to load environment file: {e}")
         return {}
-    print(f"Loaded environment variables: {loaded_vars}")
+    logger.info(f"Loaded environment variables: {loaded_vars}")
 
 
 def set_seeds(seed: int):
